@@ -1,0 +1,464 @@
+{
+    "info": {
+        "_postman_id": "b1fc16c0-f847-41cf-b761-f18dc451bea6",
+        "name": "Transactions API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "16210922"
+    },
+    "item": [
+        {
+            "name": "List All Transactions",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions"]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Transactions retrieved successfully",
+                    "data": [
+                        {
+                            "id": 1,
+                            "desc": "Sewa update",
+                            "code": "TXN-MEI-006",
+                            "rate_euro": 16500,
+                            "date_paid": "2025-05-25",
+                            "created_at": "2025-05-23T19:05:21.000000Z",
+                            "updated_at": "2025-05-23T20:04:51.000000Z",
+                            "details": [
+                                {
+                                    "id": 15,
+                                    "transaction_id": 1,
+                                    "transaction_category_id": 1,
+                                    "name": "Sewa Badak",
+                                    "value_idr": 1500000,
+                                    "created_at": "2025-05-23T20:16:32.000000Z",
+                                    "updated_at": "2025-05-23T20:16:32.000000Z",
+                                    "category": {
+                                        "id": 1,
+                                        "name": "Income",
+                                        "created_at": null,
+                                        "updated_at": null
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Get Transaction by ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/1",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions", "1"]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Transaction retrieved successfully",
+                    "data": {
+                        "id": 1,
+                        "desc": "Sewa update",
+                        "code": "TXN-MEI-006",
+                        "rate_euro": 16500,
+                        "date_paid": "2025-05-25",
+                        "created_at": "2025-05-23T19:05:21.000000Z",
+                        "updated_at": "2025-05-23T20:04:51.000000Z",
+                        "details": [
+                            {
+                                "id": 15,
+                                "transaction_id": 1,
+                                "transaction_category_id": 1,
+                                "name": "Sewa Badak",
+                                "value_idr": 1500000,
+                                "created_at": "2025-05-23T20:16:32.000000Z",
+                                "updated_at": "2025-05-23T20:16:32.000000Z",
+                                "category": {
+                                    "id": 1,
+                                    "name": "Income",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+                            }
+                        ]
+                    },
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Create Transaction",
+            "protocolProfileBehavior": {
+                "disabledSystemHeaders": {
+                    "accept": true
+                }
+            },
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"desc\": \"Sewa kendaraan bulan Mei\",\n  \"code\": \"TXN-MEI-001\",\n  \"rate_euro\": 1600,\n  \"date_paid\": \"2025-05-25\",\n  \"details\": [\n    {\n      \"transaction_category_id\": 1,\n      \"name\": \"Sewa Mobil\",\n      \"value_idr\": 3000000\n    },\n    {\n      \"transaction_category_id\": 2,\n      \"name\": \"Biaya Bensin\",\n      \"value_idr\": 500000\n    }\n  ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions"]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 201,
+                    "message": "Transaction created successfully",
+                    "data": {
+                        "desc": "Sewa kendaraan bulan Mei",
+                        "code": "TXN-MEI-001",
+                        "rate_euro": 1600,
+                        "date_paid": "2025-05-25",
+                        "updated_at": "2025-05-23T20:33:25.000000Z",
+                        "created_at": "2025-05-23T20:33:25.000000Z",
+                        "id": 7,
+                        "details": [
+                            {
+                                "id": 18,
+                                "transaction_id": 7,
+                                "transaction_category_id": 1,
+                                "name": "Sewa Mobil",
+                                "value_idr": 3000000,
+                                "created_at": "2025-05-23T20:33:25.000000Z",
+                                "updated_at": "2025-05-23T20:33:25.000000Z",
+                                "category": {
+                                    "id": 1,
+                                    "name": "Income",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+                            },
+                            {
+                                "id": 19,
+                                "transaction_id": 7,
+                                "transaction_category_id": 2,
+                                "name": "Biaya Bensin",
+                                "value_idr": 500000,
+                                "created_at": "2025-05-23T20:33:25.000000Z",
+                                "updated_at": "2025-05-23T20:33:25.000000Z",
+                                "category": {
+                                    "id": 2,
+                                    "name": "Expense",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+                            }
+                        ]
+                    },
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Update Transaction",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n  \"desc\": \"Sewa update\",\n  \"code\": \"TXN-MEI-006\",\n  \"rate_euro\": 16500,\n  \"date_paid\": \"2025-05-25\",\n  \"details\": [\n    {\n      \"transaction_category_id\": 1, //mandatory\n      \"name\": \"Sewa Badak\",\n      \"value_idr\": 1500000,\n      \"destroy\":false //dibikin false atau hilangkan untuk update\n    }\n  ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/1",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions", "1"]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Transaction updated successfully",
+                    "data": {
+                        "id": 1,
+                        "desc": "Sewa update",
+                        "code": "TXN-MEI-006",
+                        "rate_euro": 16500,
+                        "date_paid": "2025-05-25",
+                        "created_at": "2025-05-23T19:05:21.000000Z",
+                        "updated_at": "2025-05-23T20:04:51.000000Z",
+                        "details": [
+                            {
+                                "id": 15,
+                                "transaction_id": 1,
+                                "transaction_category_id": 1,
+                                "name": "Sewa Badak",
+                                "value_idr": 1500000,
+                                "created_at": "2025-05-23T20:16:32.000000Z",
+                                "updated_at": "2025-05-23T20:16:32.000000Z",
+                                "category": {
+                                    "id": 1,
+                                    "name": "Income",
+                                    "created_at": null,
+                                    "updated_at": null
+                                }
+                            }
+                        ]
+                    },
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Delete Transaction",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/2",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions", "2"]
+                }
+            },
+            "response": [
+                {
+                    "success": false,
+                    "status": 500,
+                    "message": "Delete failed",
+                    "data": null,
+                    "errors": {
+                        "exception": [
+                            "No query results for model [App\\Models\\TransactionHeader] 2"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Filter Transactions",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    },
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/filter-data?search=sewa&category_id=1&date_from=2025-05-01&date_to=2025-05-31&sort_by=code&sort_order=desc",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions", "filter-data"],
+                    "query": [
+                        {
+                            "key": "search",
+                            "value": "sewa"
+                        },
+                        {
+                            "key": "category_id",
+                            "value": "1"
+                        },
+                        {
+                            "key": "date_from",
+                            "value": "2025-05-01"
+                        },
+                        {
+                            "key": "date_to",
+                            "value": "2025-05-31"
+                        },
+                        {
+                            "key": "sort_by",
+                            "value": "code"
+                        },
+                        {
+                            "key": "sort_order",
+                            "value": "desc"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Filtered transactions retrieved successfully",
+                    "data": [
+                        {
+                            "id": 1,
+                            "desc": "Sewa update",
+                            "code": "TXN-MEI-006",
+                            "rate_euro": 16500,
+                            "date_paid": "2025-05-25",
+                            "created_at": "2025-05-23T19:05:21.000000Z",
+                            "updated_at": "2025-05-23T20:04:51.000000Z",
+                            "details": [
+                                {
+                                    "id": 15,
+                                    "transaction_id": 1,
+                                    "transaction_category_id": 1,
+                                    "name": "Sewa Badak",
+                                    "value_idr": 1500000,
+                                    "created_at": "2025-05-23T20:16:32.000000Z",
+                                    "updated_at": "2025-05-23T20:16:32.000000Z",
+                                    "category": {
+                                        "id": 1,
+                                        "name": "Income",
+                                        "created_at": null,
+                                        "updated_at": null
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Filter Rekap",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/transactions/rekap?date_from=2025-05-25&date_to=2025-05-25&category_id=2",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "transactions", "rekap"],
+                    "query": [
+                        {
+                            "key": "date_from",
+                            "value": "2025-05-25"
+                        },
+                        {
+                            "key": "date_to",
+                            "value": "2025-05-25"
+                        },
+                        {
+                            "key": "category_id",
+                            "value": "2"
+                        }
+                    ]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Rekap transaksi",
+                    "data": [
+                        {
+                            "date": "2025-05-25",
+                            "category": "Expense",
+                            "nominal": 600000
+                        }
+                    ],
+                    "errors": null
+                }
+            ]
+        },
+        {
+            "name": "Category",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:8000/api/categories",
+                    "protocol": "http",
+                    "host": ["localhost"],
+                    "port": "8000",
+                    "path": ["api", "categories"]
+                }
+            },
+            "response": [
+                {
+                    "success": true,
+                    "status": 200,
+                    "message": "Master category list",
+                    "data": [
+                        {
+                            "id": 1,
+                            "name": "Income",
+                            "created_at": null,
+                            "updated_at": null
+                        },
+                        {
+                            "id": 2,
+                            "name": "Expense",
+                            "created_at": null,
+                            "updated_at": null
+                        }
+                    ],
+                    "errors": null
+                }
+            ]
+        }
+    ]
+}
