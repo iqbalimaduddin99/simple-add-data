@@ -7,5 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::apiResource('transactions', TransactionController::class);
-Route::get('transactions/filter', [TransactionController::class, 'filter']);
+// Route::apiResource('transactions', TransactionController::class);
+// Route::get('transactions/filter', [TransactionController::class, 'filter']);
