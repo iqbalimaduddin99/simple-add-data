@@ -8,7 +8,7 @@ use App\Http\Controllers\AuthController;
 
 
 
-Route::middleware([Cors::class])->group(function () {
+// Route::middleware([Cors::class])->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
     
@@ -20,4 +20,4 @@ Route::middleware([Cors::class])->group(function () {
     Route::middleware('auth:sanctum')->get('transactions/filter-data', [TransactionController::class, 'filter']);
     Route::middleware('auth:sanctum')->get('transactions/rekap', [TransactionController::class, 'rekap']);
     Route::middleware('auth:sanctum')->apiResource('transactions', TransactionController::class)->whereNumber('transaction');
-});
+// });
