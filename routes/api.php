@@ -5,10 +5,11 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\Cors;
+use App\Http\Controllers\NumbersController;
 
 
 
-
+    Route::post('/fibonacci', [NumbersController::class, 'fibonacciSum']);
 // Route::middleware([Cors::class])->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
